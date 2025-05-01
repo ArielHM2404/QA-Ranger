@@ -48,6 +48,12 @@ The focus in this test was ensuring all expected assertions were present, locato
 - **Tested font size adjustments** by navigating to the *Artificial Intelligence* article, since this feature wasn’t available on the homepage. Assertions were added to confirm the selected text size was applied.
 - **Added `test.step()` structure** to organize the test into clear, logical steps, improving readability and debugging.
 
+Test cases execution video
+https://www.loom.com/share/a3751e0772044d73bcff5d6107a51406?sid=2035f6d5-b167-46a3-b02a-2f58f8a6450e
+
+Project description
+https://www.loom.com/share/41bb094b6e444c1f893a8c4de7afc2a9?sid=7b51c59e-ad85-477b-99e8-2ad63da5a84e
+
 
 ## Project Structure
 
