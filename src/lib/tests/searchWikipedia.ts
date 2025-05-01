@@ -27,6 +27,7 @@ export async function run(page: Page, params: {}) {
 
         console.log('Waiting for the dropdown button to be visible...');
         await languageDropdownButton.waitFor({ state: 'visible' });
+        await expect(languageDropdownButton).toBeVisible();
 
         try {
             console.log('Waiting for the dropdown window to become visible...');
@@ -36,6 +37,8 @@ export async function run(page: Page, params: {}) {
             console.log('Dropdown window not visible, retrying...');
             await languageDropdownButton.click({ force: true });
             await languageDropdownWindow.waitFor({ state: 'visible', timeout: 500 });
+            await expect(languageDropdownWindow).toBeVisible();
+
         }
     };
 
@@ -46,6 +49,7 @@ export async function run(page: Page, params: {}) {
             name: /Search for a language|Buscar un idioma|Rechercher une langue/,
         });
         await languageSearchBox.waitFor({ state: 'visible' });
+        await expect(languageSearchBox).toBeVisible();
         await languageSearchBox.fill(languageName);
         const languageLink = page.getByRole('link', { name: languageName });
         await languageLink.first().click();
@@ -98,10 +102,14 @@ export async function run(page: Page, params: {}) {
         console.log('Verifying page history...');
         const viewHistory = page.locator('#ca-history');
         await viewHistory.waitFor({ state: 'visible' });
+        await expect(viewHistory).toBeVisible();
+
         await viewHistory.click();
 
         const pageHistoryList = page.locator('#pagehistory .mw-contributions-list');
         await pageHistoryList.first().waitFor({ state: 'visible' });
+        await expect(pageHistoryList.first()).toBeVisible();
+
 
         const lastEditor = await pageHistoryList.locator('.history-user').first().textContent();
         console.log('Last editor:', lastEditor);

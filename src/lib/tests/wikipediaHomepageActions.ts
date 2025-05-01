@@ -23,6 +23,7 @@ export async function run(page: Page, params: {}) {
         while (retries > 0) {
             try {
                 await radioButton.waitFor({ state: 'visible' });
+                await expect(radioButton).toBeVisible();
                 await radioButton.click();
                 await expect(radioButton).toBeChecked();
                 break;
@@ -53,6 +54,7 @@ export async function run(page: Page, params: {}) {
         const totalArticlesLink = page.locator("a[title='Special:Statistics']").last(); //No efficient/reliable playwright selector
 
         await totalArticlesLink.waitFor({ state: 'visible' });
+        await expect(totalArticlesLink).toBeVisible();
 
         const articleCountText = await totalArticlesLink.last().textContent();
         if (!articleCountText) {
@@ -89,6 +91,7 @@ export async function run(page: Page, params: {}) {
         console.log('Filling the search input field with "artificial"...');
         const searchInputField = page.getByRole('searchbox', { name: 'Search Wikipedia' });
         await searchInputField.waitFor({ state: 'visible' });
+        await expect(searchInputField).toBeVisible();
         await searchInputField.fill('artificial');
 
         console.log('Clicking the "Artificial Intelligence" link...');
@@ -96,6 +99,7 @@ export async function run(page: Page, params: {}) {
             name: 'Artificial intelligence Intelligence of machines',
         });
         await artificialIntelligenceLink.waitFor({ state: 'visible' });
+        await expect(artificialIntelligenceLink).toBeVisible();
         await artificialIntelligenceLink.click({ force: true });
 
         // Validate navigation to the Artificial Intelligence page
@@ -116,6 +120,7 @@ export async function run(page: Page, params: {}) {
         const standardTextSizeButton = page.getByLabel('Standard').first();
         console.log('Clicking the "Standard" text size option...');
         await standardTextSizeButton.waitFor({ state: 'visible' });
+        await expect(standardTextSizeButton).toBeVisible();
         await standardTextSizeButton.click();
         await waitForDelay(500); // Wait for 500ms
         await expect(standardTextSizeButton).toBeChecked();

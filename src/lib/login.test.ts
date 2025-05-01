@@ -30,12 +30,15 @@ test('Sign in to Wikipedia', async ({ page }) => {
 
     await test.step('Click the "Log in" link', async () => {
         console.log('Clicking the "Log in" link...');
+        await expect(page.getByRole('link', { name: 'Log in' })).toBeVisible();
         await page.getByRole('link', { name: 'Log in' }).click();
     });
 
     await test.step('Fill in username and password', async () => {
         console.log('Filling in username and password...');
+        await expect(page.getByRole('textbox', { name: 'Username' })).toBeVisible();
         await page.getByRole('textbox', { name: 'Username' }).fill(wikipediaUsername);
+        await expect(page.getByRole('textbox', { name: 'Password' })).toBeVisible();
         await page.getByRole('textbox', { name: 'Password' }).fill(wikipediaPassword);
     });
 
